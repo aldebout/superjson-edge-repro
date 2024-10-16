@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { deserialize } from "superjson";
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 
 export async function POST(request: Request) {
   try {
@@ -10,7 +10,7 @@ export async function POST(request: Request) {
 
     const result = deserialize(body);
 
-    console.log(result.data.startDate.getTime());
+    console.log(result.startDate.getTime());
 
     // Return the parsed body as the response
     return NextResponse.json(body, { status: 200 });
